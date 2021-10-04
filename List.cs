@@ -46,7 +46,11 @@ namespace LinkedListProject
             this.len = 0;
             CalcLen();
         }
-
+        /// <summary>
+        /// Returns list item in given index
+        /// </summary>
+        /// <param name="index">integer representing index in the list</param>
+        /// <returns> returns node of list in given index </returns>
         public Node<T> Get(int index)
         {
             if(index <= len - 1 && index>=0)
@@ -65,13 +69,20 @@ namespace LinkedListProject
                 throw new IndexOutOfRangeException();
             }
         }
-
+        /// <summary>
+        /// appends to end of list
+        /// </summary>
+        /// <param name="cell"> cell to add</param>
         public void Append(Node<T> cell)
         {
             this.tail.Next = cell;
             this.tail = tail.Next;
             this.len++;
         }
+        /// <summary>
+        /// appends value to end of list
+        /// </summary>
+        /// <param name="value"> value to add </param>
         public void Append(T value)
         {
             this.tail.Next = new Node<T>(value);
@@ -99,6 +110,10 @@ namespace LinkedListProject
         
         public int Len { get => len; set => len = value; }
 
+        /// <summary>
+        /// removes item from list in given index
+        /// </summary>
+        /// <param name="index">index to remove</param>
         public void remove(int index)
         {
             if (index < len&& index>0)
@@ -114,7 +129,11 @@ namespace LinkedListProject
                 this.head = this.head.Next;
             }
         }
-
+        /// <summary>
+        /// inserts item to list 
+        /// </summary>
+        /// <param name="value"> value of new item </param>
+        /// <param name="index"> index to add new item</param>
         public void insert(T value, int index)
         {
             if (index < Len)
@@ -122,9 +141,9 @@ namespace LinkedListProject
                 Node<T> newItem = new Node<T>(value);
                 Node<T> next = this.Get(index);
                 newItem.Next = next;
-                if (index > 0 )
+                if (index > 0)
                 {
-                    
+
                     this.Get(index - 1).Next = newItem;
                     len++;
                 }
@@ -142,8 +161,21 @@ namespace LinkedListProject
             {
                 throw new IndexOutOfRangeException();
             }
-
-
         }
+        /// <summary>
+        /// remove all items that match a certain value
+        /// </summary>
+        /// <param name="value">value to remove</param>
+        public void removeValue(T value)
+        {
+            for(int i = 0; i < Len; i++)
+            {
+                if (this[i].Equals(value))
+                {
+                    this.remove(i);
+                }
+            }
+        }
+
     }
 }
