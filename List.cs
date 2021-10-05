@@ -177,5 +177,16 @@ namespace LinkedListProject
             }
         }
 
+        public int index(T item)
+        {
+            for(int i = 0; i < this.len; i++)
+            {
+                if (this[i].Equals(item))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }
