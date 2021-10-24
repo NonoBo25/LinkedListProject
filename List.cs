@@ -75,9 +75,17 @@ namespace LinkedListProject
         /// <param name="cell"> cell to add</param>
         public void Append(Node<T> cell)
         {
-            this.tail.Next = cell;
-            this.tail = tail.Next;
-            this.len++;
+            if (tail != null)
+            {
+                this.tail.Next = cell;
+                this.tail = tail.Next;
+                this.len++;
+            }
+            else
+            {
+                this.tail = cell;
+                this.len++;
+            }
         }
         /// <summary>
         /// appends value to end of list
@@ -85,9 +93,17 @@ namespace LinkedListProject
         /// <param name="value"> value to add </param>
         public void Append(T value)
         {
-            this.tail.Next = new Node<T>(value);
-            this.tail = tail.Next;
-            this.len++;
+            if (tail != null) {
+                this.tail.Next = new Node<T>(value);
+                this.tail = tail.Next;
+                this.len++;
+            }
+            else
+            {
+                this.tail= new Node<T>(value);
+                this.len++;
+            }
+
         }
 
         public T this[int i]

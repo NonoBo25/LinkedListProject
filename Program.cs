@@ -10,33 +10,53 @@ namespace LinkedListProject
     {
         static void Main(string[] args)
         {
+
         }
-        /*
-        void task_1()
+        static Node<int> Ex_10(int begginer,int num)
         {
-            List<int> list = new List<int>();
-            for(int i = 1; i < 11; i++)
+            int count = 1;
+            Node<int> head = new Node<int>(begginer);
+            Node<int> curr = head;
+            while (count < num)
             {
-                list.Append(i);
+                curr.Next = new Node<int>(begginer + count);
+                curr = curr.Next;
+                count++;
             }
+            return head;
         }
-        int task_2<T>(List<T> list)
+        static Node<T> Ex_6<T>(Node<T> head)
         {
-            return list.Len;
-        }
-        int task_3(List<int> l, int number)
-        {
-            return l.index(number);
+            Node<T> headCpy = new Node<T>(head);
+            headCpy.Next = null;
+            Node<T> newHead = headCpy;
+            Node<T> curr = head;
+            while (curr != null)
+            {
+                if (!isInList<T>(newHead, curr))
+                {
+                    headCpy.Next = new Node<T>(curr);
+                    headCpy = headCpy.Next;
+                    headCpy.Next = null;
+                }
+                curr = curr.Next;
+
+            }
+            return newHead;
         }
 
-        int task_4(List<int> l)
+        static bool isInList<T>(Node<T> list, Node<T> item)
         {
-            int sum = 0;
-            for(int i = 0; i < l.Len; i++)
+            Node<T> curr = list;
+            while (curr != null)
             {
-                sum += l[i];
+                if (item.Equals(curr))
+                {
+                    return true;
+                }
+                curr = curr.Next;
             }
-            return sum;
-        }*/
+            return false;
+        }
     }
 }
